@@ -168,3 +168,37 @@ var lorem person
 lorem.firstName = "lorem"
 lorem.lastName = "ipsum"
 ```
+
+## Maps
+
+keys all the same type and values all the same type.
+
+```go
+// one way to declare maps
+colors := map[string]string{
+  "red":   "#ff0000",
+  "green": "#00ff00",
+}
+
+// without initializing a value
+var colors map[string]string
+
+// make empty map using make
+colors := make(map[string]string)
+
+// add new key value pai to map
+colors["white"] = "#ffffff"
+
+// delete key value pair
+delete(colors, "white")
+```
+
+## Maps vs Structs
+
+| Map                                                            |                                                Struct |
+| :------------------------------------------------------------- | ----------------------------------------------------: |
+| used to represent a collection of related properties           | used to represent a "thing" with different properties |
+| all keys must of same type and all values must be of same type |                      values can be of different types |
+| dont need to know all the keys at compile time                 |               need to know all feilds at compile time |
+| keys are indexed - can iterate over them                       |                            keys dont support indexing |
+| reference type                                                 |                                            value type |
