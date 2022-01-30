@@ -104,6 +104,24 @@ two types of recievers:
 
 pointer recivers can modify the value to which the reciever points.
 
+## Value Types and Reference types
+
+- **Value Types**
+
+  need to use pointers to change inside function
+
+- **Reference Types**
+
+  dont need to wory about pointers.
+
+| Value Types | Reference Types |
+| :---------: | :-------------: |
+|     int     |      slice      |
+|    float    |       map       |
+|   string    |     channel     |
+|    bool     |     pointer     |
+|   struct    |    function     |
+
 ## Go Tests
 
 to make test files make file ending in `_test.go`
@@ -120,4 +138,33 @@ func newDeck() {
 func TestNewDeck(t *testing.T){
   // test code
 }
+```
+
+## Structs
+
+kind of like a javascript object
+
+### definition
+
+```go
+type person struct {
+  firstName string
+  lastName string
+}
+```
+
+### declaring variables of type struct
+
+```go
+// rely on order of definition to pass values
+lorem := person{"lorem", "ipsum"}
+
+// explicitly state properties
+lorem := person{firstName: "lorem", lastName: "ipsum"}
+
+// declare variable without value, will use zero value (empty string)
+var lorem person
+
+lorem.firstName = "lorem"
+lorem.lastName = "ipsum"
 ```
