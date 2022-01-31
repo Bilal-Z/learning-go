@@ -202,3 +202,32 @@ delete(colors, "white")
 | dont need to know all the keys at compile time                 |               need to know all feilds at compile time |
 | keys are indexed - can iterate over them                       |                            keys dont support indexing |
 | reference type                                                 |                                            value type |
+
+## Interfaces
+
+Interfaces applied implicitly to types that satisfy the interface, no need for `implements` keyword. Interfaces define method signatures. Interfaces can wrap other interfaces.
+
+```go
+// interface defintion
+type bot interface {
+  getGreeting() string
+}
+
+type englishBot struct{}
+type spanishBot struct{}
+
+
+// implementin this function means that nglishBot satisfies bot interface and is of type bot
+func (englishBot) getGreeting() string {
+  return "hello"
+}
+
+func (spanishBot) getGreeting() string {
+  return "holla"
+}
+
+// can now have a shared funtion between types that satisfy interface type
+func printGreeting(b bot) {
+  fmt.Println(b.getGreeting())
+}
+```
