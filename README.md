@@ -231,3 +231,73 @@ func printGreeting(b bot) {
   fmt.Println(b.getGreeting())
 }
 ```
+
+## Go Routines
+
+Go routines are threads
+
+use keyword `go` to create new go routine. go scheduler uses one logical CPU core by default.
+
+> _"Concurrency is not parrallelism"_
+
+- **concurrency:**
+
+  multiple threads executing code. if one blocks another is picked and worked on.
+
+- **parrallelism:**
+
+  multiple threads executing at the same time.
+
+on program execution one main routine starts up. then spawns child routines if `go` keyword is encountered. main routine controls when program exits, does not care if child routine is running.
+
+```go
+func main()  {
+  links := []string{
+    "http://google.com",
+    "http://reddit.com",
+    "http://stackoverflow.com",
+    "http://go.dev",
+  }
+
+  for _, link := range links {
+    go checkLink(link) // create new go routine
+  }
+}
+
+func checkLink(link string){
+  _, err := http.Get(link) // blocking call
+  if err != nil{
+    fmt.Println(link, "might be down")
+    return
+  }
+
+  fmt.Println(link, "is up")
+}
+```
+
+## Channels
+
+used to communicate between go routines. channels are typed can only used with one type.
+
+```go
+// create string channel
+c := make(chan string)
+
+// channels need to passed to functions for use
+func checkLink(link string, c chan string){
+  // code
+}
+```
+
+sending and recieving values with channels
+
+```go
+// send value to channel
+channel <- 5
+
+// wait to recieve value in channel
+myNumber <- channel
+
+// wait for value to be sent into channels and log out immediately
+fmt.Println(<- channel)
+```
