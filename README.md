@@ -301,3 +301,13 @@ myNumber <- channel
 // wait for value to be sent into channels and log out immediately
 fmt.Println(<- channel)
 ```
+
+## JSON Marshaling and Unmarshalling
+
+- **Marshal**
+
+  encode go data to JSON (like `JSON.stringify()`)
+
+- **Unmarshal**
+
+  decode JSON data to a go predefined data structure (like `JSON.parse()`)
