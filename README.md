@@ -302,6 +302,22 @@ myNumber <- channel
 fmt.Println(<- channel)
 ```
 
+## Defer Statements
+
+dunction called with a `defer` statement will execute after the function in which the `defer` call was made returns. `defer` calls placed on a stack and called in LIFO fashion. `defer` calls are helpful for cleanup. can be used as `finally`.
+
+```go
+func main() {
+	defer fmt.Println("World")
+
+	fmt.Println("Hello")
+}
+
+// Output:
+// Hello
+// World
+```
+
 ## JSON Marshaling and Unmarshalling
 
 - **Marshal**
